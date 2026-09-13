@@ -1,0 +1,433 @@
+print("Welcome! to Coup \nChoose your character\n")
+
+char = ["Alex", "Blair", "Charlie"]
+
+n = input("What do u choose? Alex/Blair/Charlie? ").capitalize()
+
+if n in char:
+
+    if n == char[0]:
+        print("You are player A (Alex) ")
+        print("You've got 2 coins and two influence cards")
+
+    elif n == char[1]:
+        print("Player B (Blair)")
+        print("You've got 3 coins and two influence cards")
+
+    elif n == char[2]:
+        print("Player C (Charlie)")
+        print("You've got 3 coins and two influence cards")
+
+else:
+    print("Invalid character")
+
+
+# Cards
+Alex_Cards = ["Duke", "Ambassador"]
+Blair_cards = ["Captain", "Contessa"]
+Charlie_Cards = ["Assassin", "Duke"]
+
+
+# Influences
+alex_i = 2
+blair_i = 2
+charlie_i = 2
+
+claim = None
+
+
+# Starting coins
+alex_coins = 2
+blair_coins = 3
+charlie_coins = 3
+
+
+# Turn tracker
+# 1 = Alex
+# 2 = Blair
+# 3 = Charlie
+i = 1
+
+
+while i < 4:
+
+    # Show whose turn it is
+    if i == 1:
+        print("\nPlayer A's turn")
+        print("Alex's coins:", alex_coins)
+        print("Alex's influence:", alex_i)
+
+    elif i == 2:
+        print("\nPlayer B's turn")
+        print("Blair's coins:", blair_coins)
+        print("Blair's influence:", blair_i)
+
+    elif i == 3:
+        print("\nPlayer C's turn")
+        print("Charlie's coins:", charlie_coins)
+        print("Charlie's influence:", charlie_i)
+
+
+    # Action menu
+    print("\nChoose an action:")
+    print("1. Income")
+    print("2. Foreign Aid")
+    print("3. Duke")
+    print("4. Captain")
+    print("5. Assassin")
+
+    act = int(input("Enter your choice of action: "))
+
+
+    # INCOME
+    
+
+    if act == 1:
+
+        print("You chose Income")
+
+        if i == 1:
+            alex_coins += 1
+
+        elif i == 2:
+            blair_coins += 1
+
+        elif i == 3:
+            charlie_coins += 1
+
+
+    # FOREIGN AID
+
+
+    elif act == 2:
+
+        print("You chose Foreign Aid")
+
+        if i == 1:
+            alex_coins += 2
+
+        elif i == 2:
+            blair_coins += 2
+
+        elif i == 3:
+            charlie_coins += 2
+
+
+    # DUKE
+   
+
+    elif act == 3:
+
+        print("You chose Duke")
+        print("Your majesty, claims to gain 3 coins!")
+
+        claim = "Duke"
+
+        print("\nOHHH interesting!!! Let's see if anyone thinks it's a bluff...")
+
+
+       
+        # Decide who can challenge
+      
+        if i == 1:
+
+            print("Alex claims Duke!")
+            print("Blair, do you want to challenge?")
+
+            challenger = "Blair"
+
+
+        elif i == 2:
+
+            print("Blair claims Duke!")
+            print("Alex, do you want to challenge?")
+
+            challenger = "Alex"
+
+
+        elif i == 3:
+
+            print("Charlie claims Duke!")
+            print("Alex, do you want to challenge?")
+
+            challenger = "Alex"
+
+
+       
+        # Ask for challenge
+       
+
+        challenge = int(input("\n1. Challenge\n2. Allow\nChoose: "))
+
+
+       
+        # someone CHALLENGES
+        
+
+        if challenge == 1:
+
+            print("\n", challenger, "challenged the Duke claim!")
+
+            
+            # Check Alex's cards
+           
+            if i == 1:
+
+                if "Duke" in Alex_Cards:
+
+                    print("Alex actually has Duke! ")
+                    print("The challenge FAILED!")
+
+                    # Challenger loses influence
+                    blair_i -= 1
+
+                    print("Blair loses 1 influence!")
+
+                    # Alex gets the Duke money
+                    alex_coins += 3
+
+
+                else:
+
+                    print("Alex was bluffing! ;)")
+                    print("The challenge SUCCEEDED!")
+
+                    # Alex loses influence
+                    alex_i -= 1
+
+                    print("Alex loses 1 influence!")
+
+
+            
+            # Check Blair's cards
+           
+            elif i == 2:
+
+                if "Duke" in Blair_cards:
+
+                    print("Blair actually has Duke! ")
+                    print("The challenge FAILED!")
+
+                    # Challenger loses influence
+                    alex_i -= 1
+
+                    print("Alex loses 1 influence!")
+
+                    # Blair gets the Duke money
+                    blair_coins += 3
+
+
+                else:
+
+                    print("Blair was bluffing! ;)")
+                    print("The challenge SUCCEEDED!")
+
+                    # Blair loses influence
+                    blair_i -= 1
+
+                    print("Blair loses 1 influence!")
+
+
+            
+            # Check Charlie's cards
+           
+
+            elif i == 3:
+
+                if "Duke" in Charlie_Cards:
+
+                    print("Charlie actually has Duke! ")
+                    print("The challenge FAILED!")
+
+                    # Challenger loses influence
+                    alex_i -= 1
+
+                    print("Alex loses 1 influence! XD")
+
+                    # Charlie gets the Duke money
+                    charlie_coins += 3
+
+
+                else:
+
+                    print("Charlie was bluffing! 0_0 ")
+                    print("The challenge SUCCEEDED!")
+
+                    # Charlie loses influence
+                    charlie_i -= 1
+
+                    print("Charlie loses 1 influence!")
+
+
+       
+        # PLAYER ALLOWS THE CLAIM
+        
+
+        elif challenge == 2:
+
+            print(challenger, "allowed the claim.")
+
+            # Nobody challenged, so Duke action succeeds
+
+            if i == 1:
+
+                alex_coins += 3
+                print("Alex gains 3 coins!")
+
+            elif i == 2:
+
+                blair_coins += 3
+                print("Blair gains 3 coins!")
+
+            elif i == 3:
+
+                charlie_coins += 3
+                print("Charlie gains 3 coins!")
+
+
+       
+        # INVALID CHALLENGE CHOICE
+        
+
+        else:
+
+            print("Invalid choice")
+
+
+   
+    # CAPTAIN
+   
+    elif act == 4:
+
+        print("You chose Captain hehe pirate drama inn'it?")
+        print("Steal 2 coins")
+
+        print("Who do you wanna steal from?")
+        print("1. Alex")
+        print("2. Blair")
+        print("3. Charlie")
+
+        steal_count = int(input("Choose your target: "))
+
+
+        if steal_count == i:
+
+            print("You can't steal from yourself!")
+
+
+        elif steal_count == 1:
+
+            alex_coins -= 2
+
+            if alex_coins < 0:
+                alex_coins = 0
+
+            print("You've done divine work of art on Player A's pocket 💀")
+            print("Alex now has", alex_coins, "coins")
+
+
+        elif steal_count == 2:
+
+            blair_coins -= 2
+
+            if blair_coins < 0:
+                blair_coins = 0
+
+            print("You've done divine work of art on Player B's pocket 💀")
+            print("Blair now has", blair_coins, "coins")
+
+
+        elif steal_count == 3:
+
+            charlie_coins -= 2
+
+            if charlie_coins < 0:
+                charlie_coins = 0
+
+            print("You've done divine work of art on Player C's pocket 💀")
+            print("Charlie now has", charlie_coins, "coins")
+
+
+        else:
+
+            print("Invalid target")
+
+
+   
+    # ASSASSIN
+   
+    elif act == 5:
+
+        print("You chose Assassin")
+        print("Criminal Ahh, pay 3 coins")
+
+
+        if i == 1:
+
+            if alex_coins >= 3:
+
+                alex_coins -= 3
+                print("Alex paid 3 coins")
+
+            else:
+
+                print("Alex doesn't have enough coins!")
+
+
+        elif i == 2:
+
+            if blair_coins >= 3:
+
+                blair_coins -= 3
+                print("Blair paid 3 coins")
+
+            else:
+
+                print("Blair doesn't have enough coins!")
+
+
+        elif i == 3:
+
+            if charlie_coins >= 3:
+
+                charlie_coins -= 3
+                print("Charlie paid 3 coins")
+
+            else:
+
+                print("Charlie doesn't have enough coins!")
+
+
+   
+    # INVALID ACTION
+    
+    else:
+
+        print("Invalid action")
+
+
+    
+#Score board 
+
+    print("\n--- Current Game Status ---")
+
+    print("Alex:")
+    print("Coins:", alex_coins)
+    print("Influence:", alex_i)
+
+    print("\nBlair:")
+    print("Coins:", blair_coins)
+    print("Influence:", blair_i)
+
+    print("\nCharlie:")
+    print("Coins:", charlie_coins)
+    print("Influence:", charlie_i)
+
+
+
+    # MOVE TO NEXT PLAYER
+    
+    i += 1
+
+    if i == 4:
+        i = 1
