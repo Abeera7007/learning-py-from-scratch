@@ -1,0 +1,241 @@
+print("You're an unhinged scientist experimenting in your laboratory.\n"
+      "Let's see how crazy you can get with your experiments! \n:) \n")
+
+name = input("What is your name doc? ")
+
+print(f"""Welcome, {name}! Let's get started with your experiments.
+Your laboratory contains:
+1. 🦇 Bat Wing 
+2. 🧠 Brain 
+3. 🧀 Cheese
+4. 🧊 Liquid Nitrogen
+5. 🌶️ Hot Sauce""")
+
+while True:
+
+    first = input("Choose your FIRST ingredient (1-5): ")
+
+    if first == "1":
+        first_item = "🦇 Bat Wing"
+    elif first == "2":
+        first_item = "🧠 Brain"
+    elif first == "3":
+        first_item = "🧀 Cheese"
+    elif first == "4":
+        first_item = "🧊 Liquid Nitrogen"
+    elif first == "5":
+        first_item = "🌶️ Hot Sauce"
+    else:
+        print("❌ That's not a valid ingredient!")
+        exit()
+
+    print(f"\nYou selected: {first_item}")
+
+    second = input("Choose your SECOND ingredient (1-5): ")
+
+    if second == "1":
+        second_item = "🦇 Bat Wing"
+    elif second == "2":
+        second_item = "🧠 Brain"
+    elif second == "3":
+        second_item = "🧀 Cheese"
+    elif second == "4":
+        second_item = "🧊 Liquid Nitrogen"
+    elif second == "5":
+        second_item = "🌶️ Hot Sauce"
+    else:
+        print("❌ That's not a valid ingredient!")
+        exit()
+
+    print(f"You selected: {second_item}")
+
+    print("""
+⚗️ Mixing the ingredients...
+...
+......
+.........
+""")
+
+    # 🦇 BAT WING + 🧠 BRAIN
+    if (first == "1" and second == "2") or (first == "2" and second == "1"):
+        print("""
+🧪 EXPERIMENT RESULT:
+🦇🧠 PSYCHIC BAT!
+
+The bat can now read your mind.
+
+Unfortunately, it discovered your
+most embarrassing thoughts.
+
+🧠 SANITY: -15
+""")
+
+    # 🦇 BAT WING + 🧀 CHEESE
+    elif (first == "1" and second == "3") or (first == "3" and second == "1"):
+        print("""
+🧪 EXPERIMENT RESULT:
+🧀 CHEESE BAT!
+
+The bat has become obsessed with cheese.
+
+It has stolen your entire food supply.
+
+🧀 LAB DAMAGE: 20%
+""")
+
+    # 🦇 BAT WING + 🧊 LIQUID NITROGEN
+    elif (first == "1" and second == "4") or (first == "4" and second == "1"):
+        print("""
+🧪 EXPERIMENT RESULT:
+🧊 FROZEN BAT!
+
+You created a bat-shaped ice missile.
+
+It flies directly through your laboratory window.
+
+💥 WINDOW DAMAGE: 100%
+""")
+
+    # 🦇 BAT WING + 🌶️ HOT SAUCE
+    elif (first == "1" and second == "5") or (first == "5" and second == "1"):
+        print("""
+🧪 EXPERIMENT RESULT:
+🔥 FIRE BAT!
+
+The bat catches fire and starts flying
+around your laboratory.
+
+🔥 LABORATORY FIRE!
+
+RUN!!!
+""")
+
+    # 🧠 BRAIN + 🧀 CHEESE
+    elif (first == "2" and second == "3") or (first == "3" and second == "2"):
+        print("""
+🧪 EXPERIMENT RESULT:
+🧀 GENIUS CHEESE!
+
+The cheese has become intelligent.
+
+It looks at you.
+
+"Are you seriously calling yourself
+a scientist?"
+
+💀 Emotional damage: 100%
+""")
+
+    # 🧠 BRAIN + 🧊 LIQUID NITROGEN
+    elif (first == "2" and second == "4") or (first == "4" and second == "2"):
+        print("""
+🧪 EXPERIMENT RESULT:
+🧊 FROZEN GENIUS!
+
+The brain freezes...
+
+Then suddenly predicts your future.
+
+Prediction:
+
+"You will regret this experiment."
+
+😨
+""")
+
+    # 🧠 BRAIN + 🌶️ HOT SAUCE
+    elif (first == "2" and second == "5") or (first == "5" and second == "2"):
+        print("""
+🧪 EXPERIMENT RESULT:
+🌶️ ANGRY BRAIN!
+
+The brain has developed a personality.
+
+And it is NOT happy.
+
+"WHY WOULD YOU DO THIS?!"
+
+🧠 SANITY: -25
+""")
+
+    # 🧀 CHEESE + 🧊 LIQUID NITROGEN
+    elif (first == "3" and second == "4") or (first == "4" and second == "3"):
+        print("""
+🧪 EXPERIMENT RESULT:
+❄️ CRYOGENIC CHEESE!
+
+You have created the hardest cheese
+known to science.
+
+You try to eat it.
+
+Your spoon breaks.
+
+Then your fork breaks.
+
+You give up.
+""")
+
+    # 🧀 CHEESE + 🌶️ HOT SAUCE
+    elif (first == "3" and second == "5") or (first == "5" and second == "3"):
+        print("""
+🧪 EXPERIMENT RESULT:
+🌋 LAVA CHEESE!
+
+The cheese has melted into
+extremely spicy lava.
+
+Your laboratory floor is destroyed.
+
+🔥 LAB DAMAGE: 70%
+""")
+
+    # 🧊 LIQUID NITROGEN + 🌶️ HOT SAUCE
+    elif (first == "4" and second == "5") or (first == "5" and second == "4"):
+        print("""
+🧪 EXPERIMENT RESULT:
+💥 THERMODYNAMIC DISASTER!
+
+HOT + EXTREMELY COLD
+
+was apparently a terrible idea.
+
+💥💥💥
+
+You wake up outside your laboratory.
+
+You have no idea what happened.
+
+""")
+
+    # SAME INGREDIENT
+    elif first == second:
+        print(f"""
+🧪 EXPERIMENT RESULT:
+
+You combined {first_item} with itself.
+
+...
+
+Nothing happened.
+
+Your scientific career is questionable.
+""")
+
+    print("""
+══════════════════════════════════
+
+🧪 EXPERIMENT COMPLETE.
+
+Thank you for destroying science.
+
+══════════════════════════════════
+""")
+
+    again = input("Do you want to experiment again? yes/no: ")
+
+    if again.lower() == "no":
+        break
+
+print("\n🧪 Laboratory shutdown.")
+print("Goodbye, mad scientist! 👋")
